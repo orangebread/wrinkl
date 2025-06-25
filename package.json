@@ -36,17 +36,20 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "jest",
+    "test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest",
     "lint": "eslint src/**/*.js",
     "prepublishOnly": "npm test && npm run lint"
   },
   "dependencies": {
     "chalk": "^5.3.0",
     "commander": "^11.1.0",
+    "ora": "^8.2.0",
     "prompts": "^2.4.2"
   },
   "devDependencies": {
     "eslint": "^8.55.0",
+    "fs-extra": "^11.3.0",
+    "inquirer": "^12.6.3",
     "jest": "^29.7.0"
   },
   "engines": {
