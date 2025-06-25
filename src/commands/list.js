@@ -59,12 +59,10 @@ function listActiveFeatures() {
     // Extract feature info from the markdown
     const nameMatch = content.match(/# (.+)/);
     const summaryMatch = content.match(/\*\*Summary:\*\* (.+)/);
-    const ownerMatch = content.match(/\*\*Owner:\*\* (.+)/);
     const statusMatch = content.match(/\*\*Status:\*\* (.+)/);
-    
+
     const featureName = nameMatch ? nameMatch[1] : file.replace('.md', '');
     const summary = summaryMatch ? summaryMatch[1] : 'No summary available';
-    const owner = ownerMatch ? ownerMatch[1] : 'Unknown';
     const status = statusMatch ? statusMatch[1] : 'Unknown';
     
     // Color code by status
@@ -76,7 +74,6 @@ function listActiveFeatures() {
     console.log(`\n${chalk.cyan('•')} ${chalk.bold(featureName)}`);
     console.log(`  ${chalk.gray('File:')} ${file}`);
     console.log(`  ${chalk.gray('Summary:')} ${summary}`);
-    console.log(`  ${chalk.gray('Owner:')} ${owner}`);
     console.log(`  ${chalk.gray('Status:')} ${statusColor(status)}`);
   }
 }

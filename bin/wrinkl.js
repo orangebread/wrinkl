@@ -38,7 +38,6 @@ program
   .command('feature <name>')
   .alias('f')
   .description('Create a new feature ledger')
-  .option('-o, --owner <owner>', 'feature owner', 'Pair')
   .action(createFeature);
 
 program

@@ -1,10 +1,9 @@
 # [Feature Name]
 
-**Branch:** feat/feature-name  
-**Summary:** [1-2 sentences: what this does and why it's needed]  
-**Owner:** [Human | AI | Pair]  
-**Status:** Planning  
-**Created:** YYYY-MM-DD  
+**Branch:** feat/feature-name
+**Summary:** [1-2 sentences: what this does and why it's needed]
+**Status:** Planning
+**Created:** YYYY-MM-DD
 **Updated:** YYYY-MM-DD
 
 ## Context

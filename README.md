@@ -1,14 +1,23 @@
-# Wrinkl - AI Context Management System
+<div align="center">
+  <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 20px;">
+    <img src="wrinkl_logo.png" alt="Wrinkl Logo" width="auto" height="300">
+    <h1 style="font-family: 'Baloo 2', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; font-size: 120px; font-weight: 400; color: white; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">wrinkl</h1>
+  </div>
 
-A context management system for AI-assisted development. Track features with ledgers, maintain coding patterns, and keep AI assistants aligned with your project.
+  # 🧠 AI Context Management System
 
-## Installation
+  *A context management system for AI-assisted development* ✨
+
+  Track features with ledgers 📋 • Maintain coding patterns 🎯 • Keep AI assistants aligned with your project 🤖
+</div>
+
+## 📦 Installation
 
 ```bash
 npm install -g wrinkl
 ```
 
-## Quick Start
+## 🚀 Quick Start
 
 ```bash
 # Initialize in your project
@@ -25,23 +34,23 @@ wrinkl list
 wrinkl archive user-authentication
 ```
 
-## What It Does
+## 🎯 What It Does
 
 Wrinkl creates a `.ai/` directory in your project with:
 
-- **Context files** for AI assistants to understand your project
-- **Pattern documentation** to maintain consistency
-- **Feature ledgers** to track work progress
-- **Architecture decisions** to guide development
+- 📄 **Context files** for AI assistants to understand your project
+- 📚 **Pattern documentation** to maintain consistency
+- 📋 **Feature ledgers** to track work progress
+- 🏗️ **Architecture decisions** to guide development
 
-## Why Use This?
+## 💡 Why Use This?
 
 - 🤖 **Better AI Assistance** - AI tools understand your project context
 - 📝 **Feature Tracking** - Ledgers document progress and decisions
 - 🎯 **Pattern Consistency** - Maintain coding standards across the team
 - 🔄 **Living Documentation** - Context evolves with your project
 
-## Directory Structure
+## 📁 Directory Structure
 
 After running `wrinkl init`, you'll have:
 
@@ -64,9 +73,9 @@ your-project/
     └── copilot-instructions.md # GitHub Copilot instructions (optional)
 ```
 
-## Commands
+## ⚡ Commands
 
-### `wrinkl init`
+### 🎬 `wrinkl init`
 
 Initialize the AI context system in your project.
 
@@ -83,19 +92,16 @@ Initialize the AI context system in your project.
 wrinkl init --name "My App" --type "mobile app" --stack "React Native, Node.js"
 ```
 
-### `wrinkl feature <name>`
+### 🆕 `wrinkl feature <name>`
 
 Create a new feature ledger to track development progress.
 
-**Options:**
-- `-o, --owner <owner>` - Feature owner (default: "Pair")
-
 **Example:**
 ```bash
-wrinkl feature user-authentication --owner "Human"
+wrinkl feature user-authentication
 ```
 
-### `wrinkl list`
+### 📋 `wrinkl list`
 
 List all active feature ledgers and their status.
 
@@ -107,7 +113,7 @@ List all active feature ledgers and their status.
 wrinkl list --all
 ```
 
-### `wrinkl archive <name>`
+### 📦 `wrinkl archive <name>`
 
 Archive a completed feature ledger.
 
@@ -116,98 +122,102 @@ Archive a completed feature ledger.
 wrinkl archive user-authentication
 ```
 
-## How It Works
+## ⚙️ How It Works
 
-### 1. Project Context
+### 1. 📊 Project Context
 The `.ai/project.md` file contains your project's core information:
 - Project goals and constraints
 - Technology stack
 - Key requirements
 - Development workflow
 
-### 2. Coding Patterns
+### 2. 🎨 Coding Patterns
 The `.ai/patterns.md` file documents:
 - Code style and conventions
 - Common patterns and anti-patterns
 - Testing strategies
 - Performance guidelines
 
-### 3. Architecture Decisions
+### 3. 🏗️ Architecture Decisions
 The `.ai/architecture.md` file captures:
 - System design decisions
 - Technology choices and trade-offs
 - Scalability considerations
 - Security architecture
 
-### 4. Feature Ledgers
+### 4. 📋 Feature Ledgers
 Individual feature files track:
 - Feature requirements and goals
 - Technical approach and decisions
 - Progress updates and blockers
 - Testing and deployment notes
 
-### 5. AI Assistant Rules
+### 5. 🤖 AI Assistant Rules
 The `.ai/context-rules.md` file provides:
 - Guidelines for AI assistants
 - Code quality standards
 - Security and performance rules
 - Project-specific requirements
 
-## Best Practices
+## 🌟 Best Practices
 
-### For Teams
-1. **Keep context updated** - Regularly update project files as requirements change
-2. **Use feature ledgers** - Create a ledger for each significant feature
-3. **Document decisions** - Record important technical decisions in ledgers
-4. **Review patterns** - Regularly review and update coding patterns
+### 👥 For Teams
+1. **Keep context updated** 🔄 - Regularly update project files as requirements change
+2. **Use feature ledgers** 📝 - Create a ledger for each significant feature
+3. **Document decisions** 📋 - Record important technical decisions in ledgers
+4. **Review patterns** 🔍 - Regularly review and update coding patterns
 
-### For AI Assistance
-1. **Reference context** - Tell AI assistants to read the `.ai/` directory
-2. **Mention features** - Reference specific feature ledgers when working
-3. **Update progress** - Keep ledgers updated with progress and decisions
-4. **Follow patterns** - Ensure AI-generated code follows project patterns
+### 🤖 For AI Assistance
+1. **Reference context** 📖 - Tell AI assistants to read the `.ai/` directory
+2. **Mention features** 🎯 - Reference specific feature ledgers when working
+3. **Update progress** ⏱️ - Keep ledgers updated with progress and decisions
+4. **Follow patterns** ✅ - Ensure AI-generated code follows project patterns
 
-### Example AI Prompts
+### 💬 Example AI Prompts
 ```
-"I'm working on the user-authentication feature. Please read the feature 
-ledger in .ai/ledgers/user-authentication.md and help me implement the 
+"I'm working on the user-authentication feature. Please read the feature
+ledger in .ai/ledgers/user-authentication.md and help me implement the
 login component following the patterns in .ai/patterns.md"
 ```
 
 ```
-"Please review the project context in .ai/project.md and suggest an 
-architecture for the new notification system, documenting your decisions 
+"Please review the project context in .ai/project.md and suggest an
+architecture for the new notification system, documenting your decisions
 in a new feature ledger"
 ```
 
-## Integration with AI Tools
+## 🔗 Integration with AI Tools
 
-### Cursor AI
+### 🎯 Cursor AI
 If you use Cursor, the `.cursorrules` file provides context and guidelines for the AI assistant.
 
-### Augment AI
+### ⚡ Augment AI
 The `augment.md` file provides context for Augment AI when working on your project.
 
-### GitHub Copilot
+### 🐙 GitHub Copilot
 The `.github/copilot-instructions.md` file guides GitHub Copilot to generate code that follows your project patterns.
 
-## Contributing
+## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests
-5. Submit a pull request
+1. 🍴 Fork the repository
+2. 🌿 Create a feature branch
+3. ✏️ Make your changes
+4. 🧪 Add tests
+5. 📤 Submit a pull request
 
-## License
+## 📄 License
 
 MIT - see [LICENSE](LICENSE) file for details.
 
-## Support
+## 🆘 Support
 
-- [GitHub Issues](https://github.com/orangebread/wrinkl/issues)
-- [Documentation](https://github.com/orangebread/wrinkl)
+- 🐛 [GitHub Issues](https://github.com/orangebread/wrinkl/issues)
+- 📚 [Documentation](https://github.com/orangebread/wrinkl)
 
 ---
 
-**Made with ❤️ for better AI-assisted development**
+<div align="center">
+  <strong>Made with ❤️ for better AI-assisted development</strong>
+  <br>
+  <em>Empowering developers and AI to work together seamlessly</em> ✨
+</div>

@@ -5,7 +5,7 @@ import prompts from 'prompts';
 import { config } from '../utils/config.js';
 import { logger } from '../utils/logger.js';
 
-export async function createFeature(name, options) {
+export async function createFeature(name) {
   // Check if .ai directory exists
   if (!config.isInitialized()) {
     logger.error('No .ai directory found. Run "wrinkl init" first.');
@@ -36,16 +36,8 @@ export async function createFeature(name, options) {
     validate: value => value.length > 0 || 'Summary is required'
   });
 
-  const ownerResponse = await prompts({
-    type: 'text',
-    name: 'owner',
-    message: 'Owner:',
-    initial: options.owner || config.defaults.owner
-  });
-
   const answers = {
-    summary: summaryResponse.summary,
-    owner: ownerResponse.owner
+    summary: summaryResponse.summary
   };
   
   try {
@@ -57,7 +49,6 @@ export async function createFeature(name, options) {
       .replace(/\[Feature Name\]/g, name)
       .replace('feat/feature-name', `feat/${kebabName}`)
       .replace('[1-2 sentences: what this does and why it\'s needed]', answers.summary)
-      .replace(/\[Human \| AI \| Pair\]/g, answers.owner)
       .replace(/YYYY-MM-DD/g, config.getCurrentDate());
 
     // Write ledger

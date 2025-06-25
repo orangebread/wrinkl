@@ -1,16 +1,17 @@
 export default {
   // Use ES modules
-  preset: 'node',
+  preset: 'default',
   extensionsToTreatAsEsm: ['.js'],
   globals: {
     'ts-jest': {
       useESM: true
     }
   },
-  moduleNameMapping: {
+  moduleNameMapper: {
     '^(\\.{1,2}/.*)\\.js$': '$1'
   },
-  
+  transform: {},
+
   // Test environment
   testEnvironment: 'node',
   

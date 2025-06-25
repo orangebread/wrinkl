@@ -33,7 +33,6 @@ export const config = {
   defaults: {
     projectType: 'web app',
     stack: 'TypeScript, Node.js',
-    owner: 'Pair',
     createCursorRules: true,
     createAugment: false,
     createCopilot: false
