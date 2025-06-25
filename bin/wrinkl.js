@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 
+import { readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { Command } from 'commander';
-import chalk from 'chalk';
-import { init } from '../src/commands/init.js';
-import { createFeature } from '../src/commands/feature.js';
-import { listFeatures } from '../src/commands/list.js';
 import { archiveFeature } from '../src/commands/archive.js';
-import { readFileSync } from 'fs';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+import { createFeature } from '../src/commands/feature.js';
+import { init } from '../src/commands/init.js';
+import { listFeatures } from '../src/commands/list.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -47,9 +46,6 @@ program
   .option('-a, --all', 'include archived features')
   .action(listFeatures);
 
-program
-  .command('archive <name>')
-  .description('Archive a completed feature')
-  .action(archiveFeature);
+program.command('archive <name>').description('Archive a completed feature').action(archiveFeature);
 
 program.parse();
