@@ -2,6 +2,24 @@
 
 This file provides context for Augment AI when working on this project.
 
+<!--
+🚨 ATTENTION AUGMENT USERS! 🚨
+
+📋 COPY EVERYTHING BELOW THIS COMMENT INTO YOUR AUGMENT USER GUIDELINES
+
+This template file contains project-specific context and guidelines that should be
+added to your Augment User Guidelines to help the AI understand your project better.
+
+After copying the content below to your User Guidelines, this file can be safely deleted.
+
+✅ Steps:
+1. Copy all content from "## Project Overview" down to the end of this file
+2. Paste it into your Augment User Guidelines
+3. Delete this file (src/templates/augment.md)
+
+This will ensure Augment has the proper context for working on your project!
+-->
+
 ## Project Overview
 
 Read the complete project context in the `.ai/` directory:

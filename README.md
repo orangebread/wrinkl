@@ -1,6 +1,6 @@
 <div align="center">
   <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 20px;">
-    <img src="wrinkl_logo_w_text.svg" alt="Wrinkl Logo" width="auto" height="200">
+    <img src="./assets/wrinkl_logo_w_text.svg" alt="Wrinkl Logo" width="auto" height="200">
   </div>
 
   # 🧠 AI Context Management System
@@ -33,6 +33,8 @@ wrinkl list
 wrinkl archive user-authentication
 ```
 
+> ULTIMATE PROTIP: After `wrinkl init`, Have your coding agent populate this entire template for you!
+
 ## 🎯 What It Does
 
 Wrinkl creates a `.ai/` directory in your project with:
@@ -48,6 +50,8 @@ Wrinkl creates a `.ai/` directory in your project with:
 - 📝 **Feature Tracking** - Ledgers document progress and decisions
 - 🎯 **Pattern Consistency** - Maintain coding standards across the team
 - 🔄 **Living Documentation** - Context evolves with your project
+
+Important: Keep your feedback loops tight! AI works better on focused tasks rather than sprawling features
 
 ## 📁 Directory Structure
 

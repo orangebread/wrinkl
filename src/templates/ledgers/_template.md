@@ -104,10 +104,6 @@ Steps to rollback if issues are discovered:
 - [ ] Performance is acceptable
 - [ ] Security considerations addressed
 
-### Stakeholder Feedback
-- Feedback from stakeholder 1
-- Feedback from stakeholder 2
-
 ## Completion
 
 ### Final Status

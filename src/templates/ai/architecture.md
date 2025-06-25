@@ -4,15 +4,35 @@ This document describes the high-level architecture and design decisions for thi
 
 ## Architecture Overview
 
+```mermaid
+graph TD
+    A[Frontend<br/>User Interface] --> B[API Gateway<br/>Request Routing]
+    B --> C{Service Router}
+
+    C -->|auth| D[Auth Service<br/>Authentication]
+    C -->|users| E[User Service<br/>User Management]
+    C -->|data| F[Data Service<br/>Business Logic]
+    C -->|files| G[File Service<br/>File Operations]
+
+    D --> H[Database Layer]
+    E --> H
+    F --> H
+    G --> I[File Storage]
+
+    H --> J[(Primary DB<br/>PostgreSQL)]
+    H --> K[(Cache<br/>Redis)]
+
+    F --> L[External APIs<br/>Third-party Services]
+
+    B --> M[Monitoring<br/>Logging & Metrics]
+
+    style A fill:#e1f5fe
+    style H fill:#f3e5f5
+    style I fill:#e8f5e8
+    style M fill:#fff3e0
 ```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Frontend      │    │   Backend       │    │   Database      │
-│                 │    │                 │    │                 │
-│ - React/Vue/etc │◄──►│ - Node.js/etc   │◄──►│ - PostgreSQL    │
-│ - State Mgmt    │    │ - API Layer     │    │ - Redis Cache   │
-│ - UI Components │    │ - Business Logic│    │ - File Storage  │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-```
+
+> **Note**: This diagram uses [Mermaid](https://mermaid.js.org/), a markdown-based diagramming tool that creates flowcharts, sequence diagrams, and other visualizations from simple text syntax. Most modern markdown viewers support Mermaid rendering, including GitHub, GitLab, and VS Code with the [Markdown Preview Mermaid Support](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid) extension.
 
 ## Core Components
 
@@ -54,15 +74,15 @@ User Action → Dispatch → Reducer → Store → Component Re-render
 ## Design Decisions
 
 ### Decision 1: [Technology Choice]
-**Decision**: Chose [technology] over [alternative]  
-**Reasoning**: [Why this decision was made]  
-**Trade-offs**: [What we gained/lost]  
+**Decision**: Chose [technology] over [alternative]
+**Reasoning**: [Why this decision was made]
+**Trade-offs**: [What we gained/lost]
 **Date**: [When decided]
 
 ### Decision 2: [Architecture Pattern]
-**Decision**: Implemented [pattern] for [use case]  
-**Reasoning**: [Why this pattern was chosen]  
-**Trade-offs**: [Benefits and drawbacks]  
+**Decision**: Implemented [pattern] for [use case]
+**Reasoning**: [Why this pattern was chosen]
+**Trade-offs**: [Benefits and drawbacks]
 **Date**: [When decided]
 
 ## Security Architecture

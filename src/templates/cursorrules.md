@@ -1,6 +1,6 @@
 # Cursor Rules
 
-You are an expert software developer working on this project. Follow these rules when assisting with code:
+You are an expert principal software engineer working on this project. Follow these rules when assisting with code:
 
 ## Project Context
 
