@@ -1,4 +1,4 @@
-import fs from 'fs-extra';
+import fs from 'fs';
 import path from 'path';
 import chalk from 'chalk';
 import { config } from '../utils/config.js';
@@ -6,21 +6,21 @@ import { logger } from '../utils/logger.js';
 
 export async function listFeatures(options) {
   // Check if .ai directory exists
-  if (!await config.isInitialized()) {
+  if (!config.isInitialized()) {
     logger.error('No .ai directory found. Run "wrinkl init" first.');
     process.exit(1);
   }
   
   try {
     logger.header('Feature Ledgers');
-    
+
     // List active features
-    await listActiveFeatures();
-    
+    listActiveFeatures();
+
     // List archived features if requested
     if (options.all) {
       console.log(); // Add spacing
-      await listArchivedFeatures();
+      listArchivedFeatures();
     }
     
   } catch (error) {
@@ -29,15 +29,15 @@ export async function listFeatures(options) {
   }
 }
 
-async function listActiveFeatures() {
+function listActiveFeatures() {
   const ledgersDir = config.paths.ledgersDir;
-  
-  if (!await fs.pathExists(ledgersDir)) {
+
+  if (!fs.existsSync(ledgersDir)) {
     logger.warning('No ledgers directory found.');
     return;
   }
-  
-  const files = await fs.readdir(ledgersDir);
+
+  const files = fs.readdirSync(ledgersDir);
   const ledgerFiles = files.filter(file => 
     file.endsWith('.md') && 
     !file.startsWith('_') && 
@@ -54,7 +54,7 @@ async function listActiveFeatures() {
   
   for (const file of ledgerFiles.sort()) {
     const filePath = path.join(ledgersDir, file);
-    const content = await fs.readFile(filePath, 'utf-8');
+    const content = fs.readFileSync(filePath, 'utf-8');
     
     // Extract feature info from the markdown
     const nameMatch = content.match(/# (.+)/);
@@ -81,15 +81,15 @@ async function listActiveFeatures() {
   }
 }
 
-async function listArchivedFeatures() {
+function listArchivedFeatures() {
   const archivedDir = config.paths.archivedDir;
-  
-  if (!await fs.pathExists(archivedDir)) {
+
+  if (!fs.existsSync(archivedDir)) {
     console.log(chalk.gray('No archived features found.'));
     return;
   }
-  
-  const files = await fs.readdir(archivedDir);
+
+  const files = fs.readdirSync(archivedDir);
   const archivedFiles = files.filter(file => file.endsWith('.md'));
   
   if (archivedFiles.length === 0) {
@@ -101,7 +101,7 @@ async function listArchivedFeatures() {
   
   for (const file of archivedFiles.sort()) {
     const filePath = path.join(archivedDir, file);
-    const content = await fs.readFile(filePath, 'utf-8');
+    const content = fs.readFileSync(filePath, 'utf-8');
     
     // Extract feature info
     const nameMatch = content.match(/# (.+)/);

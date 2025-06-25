@@ -1,13 +1,13 @@
-import fs from 'fs-extra';
+import fs from 'fs';
 import path from 'path';
 import chalk from 'chalk';
-import inquirer from 'inquirer';
+import prompts from 'prompts';
 import { config } from '../utils/config.js';
 import { logger } from '../utils/logger.js';
 
 export async function archiveFeature(name, options) {
   // Check if .ai directory exists
-  if (!await config.isInitialized()) {
+  if (!config.isInitialized()) {
     logger.error('No .ai directory found. Run "wrinkl init" first.');
     process.exit(1);
   }
@@ -17,36 +17,36 @@ export async function archiveFeature(name, options) {
   const archivedPath = path.join(config.paths.archivedDir, `${kebabName}.md`);
   
   // Check if ledger exists
-  if (!await fs.pathExists(ledgerPath)) {
+  if (!fs.existsSync(ledgerPath)) {
     logger.error(`Feature ledger "${kebabName}" not found.`);
-    
+
     // Suggest similar names
-    await suggestSimilarFeatures(kebabName);
+    suggestSimilarFeatures(kebabName);
     process.exit(1);
   }
-  
+
   // Check if already archived
-  if (await fs.pathExists(archivedPath)) {
+  if (fs.existsSync(archivedPath)) {
     logger.warning(`Feature "${kebabName}" is already archived.`);
     return;
   }
-  
+
   // Confirm archival
-  const { confirm } = await inquirer.prompt([{
+  const response = await prompts({
     type: 'confirm',
     name: 'confirm',
     message: `Archive feature "${kebabName}"?`,
-    default: true
-  }]);
+    initial: true
+  });
   
-  if (!confirm) {
+  if (!response.confirm) {
     logger.info('Archive cancelled.');
     return;
   }
-  
+
   try {
     // Read the current ledger
-    let content = await fs.readFile(ledgerPath, 'utf-8');
+    let content = fs.readFileSync(ledgerPath, 'utf-8');
     
     // Update the status to archived and add archive date
     const archiveDate = config.getCurrentDate();
@@ -61,14 +61,14 @@ export async function archiveFeature(name, options) {
     }
     
     // Ensure archived directory exists
-    await fs.ensureDir(config.paths.archivedDir);
-    
+    fs.mkdirSync(config.paths.archivedDir, { recursive: true });
+
     // Move to archived directory
-    await fs.writeFile(archivedPath, content);
-    await fs.remove(ledgerPath);
-    
+    fs.writeFileSync(archivedPath, content);
+    fs.unlinkSync(ledgerPath);
+
     // Remove from _active.md
-    await removeFromActiveFile(kebabName);
+    removeFromActiveFile(kebabName);
     
     logger.success(`Feature "${kebabName}" archived successfully.`);
     console.log(chalk.gray(`Moved to: ${archivedPath}`));
@@ -79,15 +79,15 @@ export async function archiveFeature(name, options) {
   }
 }
 
-async function removeFromActiveFile(kebabName) {
+function removeFromActiveFile(kebabName) {
   const activePath = config.paths.activeFile;
-  
-  if (!await fs.pathExists(activePath)) {
+
+  if (!fs.existsSync(activePath)) {
     return;
   }
-  
+
   try {
-    let activeContent = await fs.readFile(activePath, 'utf-8');
+    let activeContent = fs.readFileSync(activePath, 'utf-8');
     
     // Remove lines that reference this feature
     const lines = activeContent.split('\n');
@@ -97,7 +97,7 @@ async function removeFromActiveFile(kebabName) {
     );
     
     if (filteredLines.length !== lines.length) {
-      await fs.writeFile(activePath, filteredLines.join('\n'));
+      fs.writeFileSync(activePath, filteredLines.join('\n'));
       logger.info('Removed feature from _active.md');
     }
     
@@ -106,15 +106,15 @@ async function removeFromActiveFile(kebabName) {
   }
 }
 
-async function suggestSimilarFeatures(searchName) {
+function suggestSimilarFeatures(searchName) {
   try {
     const ledgersDir = config.paths.ledgersDir;
-    
-    if (!await fs.pathExists(ledgersDir)) {
+
+    if (!fs.existsSync(ledgersDir)) {
       return;
     }
-    
-    const files = await fs.readdir(ledgersDir);
+
+    const files = fs.readdirSync(ledgersDir);
     const ledgerFiles = files
       .filter(file => file.endsWith('.md') && !file.startsWith('_'))
       .map(file => file.replace('.md', ''));

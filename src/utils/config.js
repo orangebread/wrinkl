@@ -1,4 +1,4 @@
-import fs from 'fs-extra';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -50,21 +50,21 @@ export const config = {
   },
   
   // Check if project is initialized
-  async isInitialized() {
-    return await fs.pathExists(this.paths.aiDir);
+  isInitialized() {
+    return fs.existsSync(this.paths.aiDir);
   },
   
   // Get project configuration if it exists
-  async getProjectConfig() {
+  getProjectConfig() {
     const projectFile = path.join(this.paths.aiDir, 'project.md');
-    if (await fs.pathExists(projectFile)) {
+    if (fs.existsSync(projectFile)) {
       try {
-        const content = await fs.readFile(projectFile, 'utf-8');
+        const content = fs.readFileSync(projectFile, 'utf-8');
         // Parse basic project info from the markdown
         const nameMatch = content.match(/# (.+)/);
         const typeMatch = content.match(/\*\*Type:\*\* (.+)/);
         const stackMatch = content.match(/\*\*Stack:\*\* (.+)/);
-        
+
         return {
           name: nameMatch ? nameMatch[1] : null,
           type: typeMatch ? typeMatch[1] : null,

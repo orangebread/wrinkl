@@ -1,13 +1,13 @@
-import fs from 'fs-extra';
+import fs from 'fs';
 import path from 'path';
 import chalk from 'chalk';
-import inquirer from 'inquirer';
+import prompts from 'prompts';
 import { config } from '../utils/config.js';
 import { logger } from '../utils/logger.js';
 
 export async function createFeature(name, options) {
   // Check if .ai directory exists
-  if (!await config.isInitialized()) {
+  if (!config.isInitialized()) {
     logger.error('No .ai directory found. Run "wrinkl init" first.');
     process.exit(1);
   }
@@ -23,31 +23,35 @@ export async function createFeature(name, options) {
   const ledgerPath = path.join(config.paths.ledgersDir, `${kebabName}.md`);
   
   // Check if ledger already exists
-  if (await fs.pathExists(ledgerPath)) {
+  if (fs.existsSync(ledgerPath)) {
     logger.error(`Feature ledger "${kebabName}" already exists.`);
     process.exit(1);
   }
   
   // Get additional information
-  const answers = await inquirer.prompt([
-    {
-      type: 'input',
-      name: 'summary',
-      message: 'Feature summary (1-2 sentences):',
-      validate: input => input.length > 0 || 'Summary is required'
-    },
-    {
-      type: 'input',
-      name: 'owner',
-      message: 'Owner:',
-      default: options.owner || config.defaults.owner
-    }
-  ]);
+  const summaryResponse = await prompts({
+    type: 'text',
+    name: 'summary',
+    message: 'Feature summary (1-2 sentences):',
+    validate: value => value.length > 0 || 'Summary is required'
+  });
+
+  const ownerResponse = await prompts({
+    type: 'text',
+    name: 'owner',
+    message: 'Owner:',
+    initial: options.owner || config.defaults.owner
+  });
+
+  const answers = {
+    summary: summaryResponse.summary,
+    owner: ownerResponse.owner
+  };
   
   try {
     // Read template
-    const template = await fs.readFile(config.paths.templateFile, 'utf-8');
-    
+    const template = fs.readFileSync(config.paths.templateFile, 'utf-8');
+
     // Replace placeholders
     const content = template
       .replace(/\[Feature Name\]/g, name)
@@ -55,12 +59,13 @@ export async function createFeature(name, options) {
       .replace('[1-2 sentences: what this does and why it\'s needed]', answers.summary)
       .replace(/\[Human \| AI \| Pair\]/g, answers.owner)
       .replace(/YYYY-MM-DD/g, config.getCurrentDate());
-    
+
     // Write ledger
-    await fs.outputFile(ledgerPath, content);
+    fs.mkdirSync(path.dirname(ledgerPath), { recursive: true });
+    fs.writeFileSync(ledgerPath, content);
     
     // Update _active.md
-    await updateActiveFile(kebabName, answers.summary);
+    updateActiveFile(kebabName, answers.summary);
     
     logger.success(`Created feature ledger: ${ledgerPath}`);
     console.log(chalk.yellow('\nTo start working on this feature:'));
@@ -73,15 +78,15 @@ export async function createFeature(name, options) {
   }
 }
 
-async function updateActiveFile(kebabName, summary) {
+function updateActiveFile(kebabName, summary) {
   const activePath = config.paths.activeFile;
-  
-  if (!await fs.pathExists(activePath)) {
+
+  if (!fs.existsSync(activePath)) {
     logger.warning('_active.md file not found. Feature created but not added to active list.');
     return;
   }
-  
-  let activeContent = await fs.readFile(activePath, 'utf-8');
+
+  let activeContent = fs.readFileSync(activePath, 'utf-8');
   
   // Add to up next section
   const upNextMarker = '## 🔴 Up Next (Priority Order)';
@@ -96,7 +101,7 @@ async function updateActiveFile(kebabName, summary) {
       `1. **[${kebabName}](${kebabName}.md)** - ${summary}\n` +
       afterUpNext;
     
-    await fs.writeFile(activePath, activeContent);
+    fs.writeFileSync(activePath, activeContent);
     logger.info('Added feature to _active.md');
   } else {
     logger.warning('Could not find "Up Next" section in _active.md. Feature created but not added to active list.');
