@@ -12,8 +12,17 @@
 
 ## 📦 Installation
 
+Choose your preferred package manager:
+
 ```bash
+# npm
 npm install -g wrinkl
+
+# pnpm
+pnpm add -g wrinkl
+
+# yarn
+yarn global add wrinkl
 ```
 
 ## 🚀 Quick Start

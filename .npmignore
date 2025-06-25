@@ -1,5 +1,5 @@
 # Source files not needed in published package
-src/templates/
+# src/templates/ - KEEP: needed for CLI functionality
 test/
 tests/
 *.test.js
@@ -8,6 +8,7 @@ tests/
 # Development files
 .eslintrc*
 .prettierrc*
+biome.json
 jest.config.js
 babel.config.js
 webpack.config.js

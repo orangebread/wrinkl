@@ -50,16 +50,6 @@ Brief description of what this project does and its main purpose.
 - CI/CD tools
 - Monitoring tools
 
-## Project Structure
-
-```
-project-root/
-├── src/
-├── tests/
-├── docs/
-└── config/
-```
-
 Brief explanation of the main directories and their purposes.
 
 ## Development Workflow
