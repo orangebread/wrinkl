@@ -1,0 +1,102 @@
+# Source files not needed in published package
+src/templates/
+test/
+tests/
+*.test.js
+*.spec.js
+
+# Development files
+.eslintrc*
+.prettierrc*
+jest.config.js
+babel.config.js
+webpack.config.js
+rollup.config.js
+
+# Documentation that's not needed
+docs/
+examples/
+demo/
+
+# Development dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Coverage and test artifacts
+coverage/
+.nyc_output
+test-results/
+playwright-report/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*~
+
+# Environment files
+.env*
+
+# Cache directories
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+
+# Build artifacts (keep only what's needed)
+dist/
+build/
+*.tsbuildinfo
+
+# Git files
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD files
+.github/
+.travis.yml
+.circleci/
+azure-pipelines.yml
+
+# Package manager files
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# Development scripts
+scripts/dev/
+scripts/test/
+
+# Local configuration
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Backup files
+*.bak
+*.backup
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar

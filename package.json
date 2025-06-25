@@ -1,0 +1,57 @@
+{
+  "name": "wrinkl",
+  "version": "1.0.0",
+  "description": "A context management system for AI-assisted development using ledgers to track features and maintain coding patterns",
+  "keywords": [
+    "ai",
+    "context",
+    "ledger",
+    "development",
+    "cli",
+    "scaffolding",
+    "ai-tools",
+    "cursor",
+    "copilot",
+    "claude"
+  ],
+  "homepage": "https://github.com/orangebread/wrinkl",
+  "bugs": {
+    "url": "https://github.com/orangebread/wrinkl/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orangebread/wrinkl.git"
+  },
+  "license": "MIT",
+  "author": "Jeff Lee",
+  "main": "src/index.js",
+  "type": "module",
+  "bin": {
+    "wrinkl": "./bin/wrinkl.js"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint src/**/*.js",
+    "prepublishOnly": "npm test && npm run lint"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^9.2.12",
+    "ora": "^7.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.55.0",
+    "jest": "^29.7.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
