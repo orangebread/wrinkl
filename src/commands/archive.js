@@ -38,8 +38,8 @@ export async function archiveFeature(name, options) {
     message: `Archive feature "${kebabName}"?`,
     initial: true
   });
-  
-  if (!response.confirm) {
+
+  if (!response || !response.confirm) {
     logger.info('Archive cancelled.');
     return;
   }

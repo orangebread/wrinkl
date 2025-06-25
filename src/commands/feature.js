@@ -36,6 +36,11 @@ export async function createFeature(name) {
     validate: value => value.length > 0 || 'Summary is required'
   });
 
+  if (!summaryResponse) {
+    logger.info('Feature creation cancelled.');
+    return;
+  }
+
   const answers = {
     summary: summaryResponse.summary
   };

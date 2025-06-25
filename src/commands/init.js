@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import chalk from 'chalk';
 import prompts from 'prompts';
+import ora from 'ora';
 import { config } from '../utils/config.js';
 import { logger } from '../utils/logger.js';
 
@@ -105,7 +106,8 @@ export async function init(options) {
     copilot: options.withCopilot || promptAnswers.copilot || false
   };
 
-  console.log('Creating AI context structure...');
+  // Start spinner for file creation process
+  const spinner = ora('Creating AI context structure...').start();
 
   try {
     // Create directory structure using synchronous operations
@@ -113,7 +115,9 @@ export async function init(options) {
 
     // Copy templates with variable substitution
     const templateDir = config.paths.templatesDir;
-    
+
+    spinner.text = 'Creating AI context files...';
+
     // Copy AI directory templates
     copyTemplate(
       path.join(templateDir, 'ai/README.md'),
@@ -146,6 +150,8 @@ export async function init(options) {
       path.join(config.paths.aiDir, 'context-rules.md')
     );
 
+    spinner.text = 'Setting up feature ledger system...';
+
     // Copy ledger templates
     copyTemplate(
       path.join(templateDir, 'ledgers/_template.md'),
@@ -159,6 +165,10 @@ export async function init(options) {
     );
 
     // Copy optional files
+    if (answers.cursorrules || answers.augment || answers.copilot) {
+      spinner.text = 'Adding optional configuration files...';
+    }
+
     if (answers.cursorrules) {
       copyTemplate(
         path.join(templateDir, 'cursorrules.md'),
@@ -181,7 +191,11 @@ export async function init(options) {
       );
     }
 
-    logger.success('AI context system initialized!');
+    // Complete the spinner with success
+    spinner.succeed('AI context system initialized!');
+
+    // Remove the duplicate success message since spinner now shows it
+    // logger.success('AI context system initialized!');
 
     // Print next steps
     logger.success('Setup complete!');
@@ -193,7 +207,7 @@ export async function init(options) {
     logger.step(4, 'Start coding with AI assistance!');
     
   } catch (error) {
-    logger.error('Failed to initialize AI context system');
+    spinner.fail('Failed to initialize AI context system');
     logger.error(error.message);
     console.error('Full error:', error);
     process.exit(1);
