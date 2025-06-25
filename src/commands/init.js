@@ -1,10 +1,11 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import chalk from 'chalk';
-import prompts from 'prompts';
 import ora from 'ora';
+import prompts from 'prompts';
 import { config } from '../utils/config.js';
 import { logger } from '../utils/logger.js';
+import { getPackageManagerInfo } from '../utils/package-manager.js';
 
 export async function init(options) {
   logger.header('AI Ledger - Context System Setup');
@@ -35,7 +36,7 @@ export async function init(options) {
       name: 'projectName',
       message: 'Project name:',
       initial: path.basename(process.cwd()),
-      validate: value => value.length > 0 || 'Project name is required'
+      validate: (value) => value.length > 0 || 'Project name is required'
     });
     promptAnswers.projectName = response.projectName;
   }
@@ -153,16 +154,11 @@ export async function init(options) {
     spinner.text = 'Setting up feature ledger system...';
 
     // Copy ledger templates
-    copyTemplate(
-      path.join(templateDir, 'ledgers/_template.md'),
-      config.paths.templateFile
-    );
+    copyTemplate(path.join(templateDir, 'ledgers/_template.md'), config.paths.templateFile);
 
-    copyTemplate(
-      path.join(templateDir, 'ledgers/_active.md'),
-      config.paths.activeFile,
-      { DATE: config.getCurrentDate() }
-    );
+    copyTemplate(path.join(templateDir, 'ledgers/_active.md'), config.paths.activeFile, {
+      DATE: config.getCurrentDate()
+    });
 
     // Copy optional files
     if (answers.cursorrules || answers.augment || answers.copilot) {
@@ -170,17 +166,11 @@ export async function init(options) {
     }
 
     if (answers.cursorrules) {
-      copyTemplate(
-        path.join(templateDir, 'cursorrules.md'),
-        '.cursorrules'
-      );
+      copyTemplate(path.join(templateDir, 'cursorrules.md'), '.cursorrules');
     }
 
     if (answers.augment) {
-      copyTemplate(
-        path.join(templateDir, 'augment.md'),
-        'augment.md'
-      );
+      copyTemplate(path.join(templateDir, 'augment.md'), 'augment.md');
     }
 
     if (answers.copilot) {
@@ -205,7 +195,12 @@ export async function init(options) {
     logger.step(3, 'Create your first feature ledger:');
     logger.code('wrinkl feature my-first-feature');
     logger.step(4, 'Start coding with AI assistance!');
-    
+
+    // Show package manager specific tip
+    const pmInfo = getPackageManagerInfo();
+    console.log(
+      chalk.gray(`\n💡 Detected ${pmInfo.displayName} - great choice for modern development!`)
+    );
   } catch (error) {
     spinner.fail('Failed to initialize AI context system');
     logger.error(error.message);
