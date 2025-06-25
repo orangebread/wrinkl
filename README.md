@@ -33,7 +33,7 @@ wrinkl list
 wrinkl archive user-authentication
 ```
 
-> ULTIMATE PROTIP: After `wrinkl init`, Have your coding agent populate this entire template for you!
+> 🔥 **ULTIMATE PROTIP**: After running `wrinkl init`, ask your AI coding assistant to **automatically populate the entire `.ai/` directory** for you! ✨
 
 ## 🎯 What It Does
 
@@ -52,6 +52,20 @@ Wrinkl creates a `.ai/` directory in your project with:
 - 🔄 **Living Documentation** - Context evolves with your project
 
 Important: Keep your feedback loops tight! AI works better on focused tasks rather than sprawling features
+
+## 🚀 The Story Behind Wrinkl
+
+> *"After 2+ years of coding exclusively with AI, I've learned that context is everything."*
+
+As a software engineer with 15 years of experience, I've witnessed the AI revolution transform how we build software. **Wrinkl** is my attempt to formalize the patterns and processes that make AI-assisted development truly effective.
+
+**The Problem**: AI assistants are incredibly powerful, but they often lack the context needed to make decisions that align with your project's goals, patterns, and constraints.
+
+**The Solution**: A structured approach to context management that keeps your AI assistants informed, your team aligned, and your codebase consistent.
+
+This isn't just another tool—it's a methodology that evolves with the rapidly changing AI landscape.
+
+💬 **Want to chat about AI-assisted development?** Hit me up on Discord: **jayeeeffeff**
 
 ## 📁 Directory Structure
 
@@ -194,6 +208,9 @@ in a new feature ledger"
 ### 🎯 Cursor AI
 If you use Cursor, the `.cursorrules` file provides context and guidelines for the AI assistant.
 
+### 🌊 Windsurf AI
+If you use Windsurf, simply rename `.cursorrules` to `.windsurfrules` - the content is identical, just different filename conventions.
+
 ### ⚡ Augment AI
 The `augment.md` file provides context for Augment AI when working on your project.
 
@@ -215,12 +232,4 @@ MIT - see [LICENSE](LICENSE) file for details.
 ## 🆘 Support
 
 - 🐛 [GitHub Issues](https://github.com/orangebread/wrinkl/issues)
-- 📚 [Documentation](https://github.com/orangebread/wrinkl)
 
----
-
-<div align="center">
-  <strong>Made with ❤️ for better AI-assisted development</strong>
-  <br>
-  <em>Empowering developers and AI to work together seamlessly</em> ✨
-</div>
