@@ -1,7 +1,6 @@
 <div align="center">
   <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 20px;">
-    <img src="wrinkl_logo.png" alt="Wrinkl Logo" width="auto" height="300">
-    <h1 style="font-family: 'Baloo 2', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; font-size: 120px; font-weight: 400; color: white; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">wrinkl</h1>
+    <img src="wrinkl_logo_w_text.svg" alt="Wrinkl Logo" width="auto" height="200">
   </div>
 
   # 🧠 AI Context Management System
