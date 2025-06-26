@@ -1,6 +1,6 @@
 <div align="center">
   <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 20px;">
-    <img src="./assets/wrinkl_logo_w_text.svg" alt="Wrinkl Logo" width="auto" height="200">
+    <img src="./assets/wrinkl_logo_official.svg" alt="Wrinkl Logo" width="auto" height="200">
   </div>
 
   # 🧠 AI Context Management System
