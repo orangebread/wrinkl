@@ -1,22 +1,23 @@
 # AI Context Directory
 
-This directory contains context files to help AI assistants understand your project better.
+This directory contains context files to help AI assistants understand the wrinkl project better.
 
 ## Files Overview
 
-- **project.md** - Core project information, goals, and constraints
-- **patterns.md** - Coding patterns, conventions, and best practices
-- **architecture.md** - System architecture and design decisions
-- **context-rules.md** - Rules for AI assistants working on this project
+- **project.md** - Core project information, goals, constraints, and technology stack
+- **patterns.md** - Coding patterns, conventions, and best practices for wrinkl
+- **architecture.md** - System architecture, design decisions, and component relationships
+- **context-rules.md** - Specific rules and guidelines for AI assistants working on wrinkl
 
 ## Ledgers Directory
 
-The `ledgers/` directory contains feature tracking files:
+The `ledgers/` directory contains feature tracking files for the wrinkl project:
 
-- **_active.md** - Current active features and their status
+- **_active.md** - Current active features and their status (dashboard view)
 - **_template.md** - Template for creating new feature ledgers
-- **[feature-name].md** - Individual feature ledgers
+- **[feature-name].md** - Individual feature ledgers (e.g., config-management.md)
 - **archived/** - Completed/cancelled feature ledgers
+- **npm-publishing-preparation.md** - Recently completed npm publishing preparation
 
 ## How to Use
 

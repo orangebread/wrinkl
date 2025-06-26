@@ -1,26 +1,36 @@
 # Wrinkl
 
-**Type:** CLI Tool
-**Stack:** JavaScript (ES Modules), Node.js
+**Type:** CLI Tool / npm Package
+**Stack:** JavaScript (ES Modules), Node.js 16+
 **Created:** 2025-06-25
+**Author:** Jeff Lee (@orangebread)
+**Repository:** https://github.com/orangebread/wrinkl
 
 ## Project Overview
 
 Wrinkl is a command-line tool for AI context management that creates structured `.ai/` directories in projects to help AI assistants understand codebases better. It uses a "ledger" system to track features and maintain coding patterns, providing context files, pattern documentation, feature ledgers, and architecture decisions to guide development.
 
+Born from 2+ years of AI-assisted development experience, Wrinkl formalizes the patterns and processes that make AI coding truly effective by solving the context problem - ensuring AI assistants have the information they need to make decisions aligned with project goals, patterns, and constraints.
+
 ## Goals
 
-- Improve AI assistant effectiveness by providing structured project context
-- Track feature development progress through ledger-based documentation
-- Maintain coding consistency across teams and projects
-- Create living documentation that evolves with the project
+- **Improve AI assistant effectiveness** by providing structured project context
+- **Track feature development progress** through ledger-based documentation
+- **Maintain coding consistency** across teams and projects
+- **Create living documentation** that evolves with the project
+- **Support multiple package managers** (npm, pnpm, yarn) for broad adoption
+- **Provide excellent developer experience** with modern tooling and clear feedback
 
 ## Constraints
 
-- Must work across different project types and technology stacks
-- CLI interface should be intuitive and follow Unix conventions
-- Templates must be flexible enough for various project needs
-- File operations must be safe and recoverable
+- **Cross-Platform**: Must work on Windows, macOS, and Linux
+- **Package Manager Agnostic**: Auto-detect and support npm, pnpm, yarn
+- **Zero Config**: Work out of the box with sensible defaults
+- **Template Flexibility**: Support various project types and AI assistants
+- **Safe Operations**: All file operations must be recoverable and non-destructive
+- **Modern Node.js**: Require Node.js 16+ for ES modules and modern features
+- **Minimal Dependencies**: Keep dependency tree small for fast installs
+- **CLI Conventions**: Follow Unix CLI patterns and conventions
 
 ## Key Requirements
 
@@ -40,20 +50,25 @@ Wrinkl is a command-line tool for AI context management that creates structured 
 ## Technology Stack
 
 ### Core Runtime
-- Node.js (ES Modules)
-- JavaScript with modern syntax
-- NPM for package management
+- **Node.js 16+** with ES Modules support
+- **JavaScript** with modern syntax (async/await, destructuring, etc.)
+- **Multi-Package Manager** support (npm, pnpm, yarn)
 
 ### CLI Framework
-- Commander.js for command parsing and options
-- Prompts for interactive user input
-- Chalk for colored terminal output
-- Ora for loading spinners
+- **Commander.js 11.x** - Command parsing and argument handling
+- **Chalk 5.x** - Colored terminal output and styling
+- **Ora 8.x** - Loading spinners and progress indicators
+- **Prompts 2.x** - Interactive user input and confirmations
 
 ### File Operations
-- Native Node.js fs module for file system operations
-- Path module for cross-platform path handling
-- Template substitution using string replacement
+- **Native Node.js fs** - File system operations with error handling
+- **Path module** - Cross-platform path handling
+- **Template system** - Variable substitution in template files
+
+### Development Tools
+- **Biome 2.x** - Modern linting and formatting (replaces ESLint + Prettier)
+- **Jest 29.x** - Testing framework with ES module support
+- **Package Manager Detection** - Auto-detects user's preferred PM
 
 ## Project Structure
 

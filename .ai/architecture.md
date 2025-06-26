@@ -21,24 +21,29 @@ graph TD
 
     H --> I[config.js<br/>Path Management]
     H --> J[logger.js<br/>Console Output]
-    H --> K[templates/<br/>Template Files]
+    H --> K[package-manager.js<br/>PM Detection]
+    H --> L[templates/<br/>Template Files]
 
-    D --> L[File System Operations]
-    E --> L
-    F --> L
-    G --> L
+    D --> M[File System Operations]
+    E --> M
+    F --> M
+    G --> M
 
-    L --> M[.ai/ Directory<br/>Context Files]
-    L --> N[ledgers/<br/>Feature Tracking]
-    L --> O[archived/<br/>Completed Features]
+    M --> N[.ai/ Directory<br/>Context Files]
+    M --> O[ledgers/<br/>Feature Tracking]
+    M --> P[archived/<br/>Completed Features]
 
-    K --> P[AI Templates<br/>project.md, patterns.md]
-    K --> Q[Ledger Templates<br/>_template.md, _active.md]
+    L --> Q[AI Templates<br/>project.md, patterns.md]
+    L --> R[Ledger Templates<br/>_template.md, _active.md]
+
+    K --> S[Package Manager<br/>Auto-Detection]
+    S --> T[npm/pnpm/yarn<br/>Commands]
 
     style A fill:#e1f5fe
     style H fill:#f3e5f5
-    style L fill:#e8f5e8
-    style M fill:#fff3e0
+    style M fill:#e8f5e8
+    style N fill:#fff3e0
+    style S fill:#f0f4c3
 ```
 
 > **Note**: This diagram uses [Mermaid](https://mermaid.js.org/), a markdown-based diagramming tool that creates flowcharts, sequence diagrams, and other visualizations from simple text syntax. Most modern markdown viewers support Mermaid rendering, including GitHub, GitLab, and VS Code with the [Markdown Preview Mermaid Support](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid) extension.
