@@ -1,4 +1,4 @@
-> **❗️⚠️ PROJECT DEPRECATED ⚠️❗️**: Please try Wrinkl's successor SpecLinter `https://github.com/orangebread/speclinter-mcp`. Thanks to all who starred and supported this project!
+> **❗️⚠️ PROJECT DEPRECATED ⚠️❗️**: Please try Wrinkl's successor SpecLinter `[https://github.com/orangebread/speclinter-mcp](https://github.com/orangebread/speclinter-mcp)`. Thanks to all who starred and supported this project!
 
 <div align="center">
   <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 20px;">
