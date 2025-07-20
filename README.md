@@ -1,3 +1,5 @@
+> **❗️⚠️ PROJECT DEPRECATED ⚠️❗️**: Please try Wrinkl's successor SpecLinter `https://github.com/orangebread/speclinter-mcp`. Thanks to all who starred and supported this project!
+
 <div align="center">
   <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 20px;">
     <img src="./assets/wrinkl_logo_official.svg" alt="Wrinkl Logo" width="auto" height="200">
